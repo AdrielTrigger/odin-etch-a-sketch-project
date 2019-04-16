@@ -1,0 +1,16 @@
+body {
+    background-color: blue;
+    color: white;
+}
+
+.canvas {
+    height: 600px;
+    width: 600px;
+    background-color: rgb(148, 148, 18);
+    display: grid;
+    grid-template: repeat(16, 1fr) / repeat(16, 1fr);
+}
+
+.painted {
+    background-color: white;
+}
