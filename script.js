@@ -1,40 +1,71 @@
-let canvas = document.querySelector('.canvas');
-let ref = document.querySelector('.ref');
-let res = document.querySelector('.resize');
-let i;
-let j;
+let body = document.querySelector('body');
+let createGrid = document.querySelector('button');
+let grid = document.querySelector('.container');
+let lines, collumns;
+let colorPattern = 'single';
+let singleColor = document.querySelector('.single');
+let randomColors = document.querySelector('.random');
 
-for (i = 0; i <= 16; i++) {
-    for (j = 0; j <= 16; j++) {
-        dot = document.createElement('div');
-        dot.classList.add('unpainted');
-        canvas.appendChild(dot);
+grid.style.setProperty('display', 'grid');
+grid.style.setProperty('grid-template', 'repeat(' + 16 + ', 1fr) / repeat(' + 16 + ', 1fr)');
+for (lines = 0; lines < 16; lines++) {
+    for (collumns = 0; collumns < 16; collumns++) {
+        let square = document.createElement('div');
+        square.classList.add('square');
+        square.addEventListener('mouseover', () => {
+            if (colorPattern === 'single') {
+                square.style.setProperty('background-color', 'black');
+            } else if (colorPattern === 'random') {
+                let red, green, blue;
+                red = Math.floor(Math.random() * 256);
+                green = Math.floor(Math.random() * 256);
+                blue = Math.floor(Math.random() * 256);
+                square.style.setProperty('background-color', 'rgb(' + red + ', ' + green + ', ' + blue +')');
+            }
+        });
+        grid.appendChild(square);
     }
 }
 
-function refresh() {
-    dots = document.getElementsByClassName('unpainted');
-    for (let z = 0; z <= i * j; z++) {
-        dots[z].classList.remove('painted');
+function gridCreation (x) {
+    body.removeChild(grid);
+    grid = document.createElement('div');
+    grid.classList.add('container');
+    body.appendChild(grid);
+    for (lines = 0; lines < x; lines++) {
+        for (collumns = 0; collumns < x; collumns++) {
+            let square = document.createElement('div');
+            square.classList.add('square');
+            square.addEventListener('mouseover', () => {
+                if (colorPattern === 'single') {
+                    square.style.setProperty('background-color', 'black');
+                } else if (colorPattern === 'random') {
+                    let red, green, blue;
+                    red = Math.floor(Math.random() * 256);
+                    green = Math.floor(Math.random() * 256);
+                    blue = Math.floor(Math.random() * 256);
+                    square.style.setProperty('background-color', 'rgb(' + red + ', ' + green + ', ' + blue +')');
+                }
+            });
+            grid.appendChild(square);
+        }
+        grid.style.setProperty('display', 'grid');
+        grid.style.setProperty('grid-template', 'repeat(' + x + ', 1fr) / repeat(' + x + ', 1fr)');
     }
 }
 
-ref.addEventListener('click', refresh);
 
-function resizing() {
-    dots = document.getElementsByClassName('unpainted');
-    for (let q = i * j; q >= 0; q--) {
-        canvas.removerChild(dots[q]);
-    }
+createGrid.addEventListener('click', () => {
     let side = prompt('Set number of squares per side:', 0);
-    canvas.style.gridTemplate = 'repeat(' + side + ', 1fr) / (' + side + ', 1fr)';
-}
+    grid.style.setProperty('display', 'grid');
+    grid.style.setProperty('grid-template', 'repeat(' + side + ', 1fr) / repeat(' + side + ', 1fr)');
+    gridCreation(side);
+});
 
-res.addEventListener('click', resizing);
+singleColor.addEventListener('click', () => {
+    colorPattern = 'single';
+});
 
-for (let x = 0; x <= i * j; x++) {
-    dots = document.getElementsByClassName('unpainted');
-    dots[x].addEventListener('mouseover', () => {
-        dots[x].classList.add('painted');
-    });
-}
+randomColors.addEventListener('click', () => {
+    colorPattern = 'random';
+});

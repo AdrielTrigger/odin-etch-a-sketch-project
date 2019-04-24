@@ -1,16 +1,115 @@
 body {
-    background-color: blue;
-    color: white;
+    height: 100%;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(rgb(27, 29, 126), rgb(184, 233, 255));
+    text-align: center;
 }
 
-.canvas {
+h1, h4 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
     height: 600px;
     width: 600px;
-    background-color: rgb(148, 148, 18);
-    display: grid;
-    grid-template: repeat(16, 1fr) / repeat(16, 1fr);
+    border: solid rgb(4, 4, 92) 5px;
+    border-radius: 5px;
 }
 
-.painted {
-    background-color: white;
+.square {
+    background-color: rgb(254, 255, 233);
+}
+
+.refresh {
+    height: 40px;
+    font-size: 20px;
+    color: blue;
+    font-weight: 600;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: solid rgb(196, 196, 196) 2px;
+}
+
+.refresh:hover {
+    height: 40px;
+    font-size: 20px;
+    color: aliceblue;
+    font-weight: 600;
+    background-color: blue;
+    border-radius: 10px;
+    border: solid rgb(196, 196, 196) 2px;
+}
+
+.refresh:active {
+    height: 40px;
+    font-size: 20px;
+    color: aliceblue;
+    font-weight: 700;
+    background-color: blue;
+    border-radius: 10px;
+    border: solid rgb(196, 196, 196) 4px;
+}
+
+.single {
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    border: solid rgb(196, 196, 196) 2px;
+}
+
+.single:hover {
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: solid rgb(196, 196, 196) 2px;
+}
+
+.single:active {
+    height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: solid rgb(196, 196, 196) 4px;
+}
+
+.random {
+    color: aliceblue;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-image: linear-gradient(blue, green, yellow, red, rgb(252, 151, 168), purple, cyan);
+    border: solid rgb(196, 196, 196) 2px;
+}
+
+.random:hover {
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    color: aliceblue;
+    background-image: linear-gradient(cyan, purple, rgb(252, 151, 168), red, yellow, green, blue);
+    border: solid rgb(196, 196, 196) 2px;
+}
+
+.random:active {
+    height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: aliceblue;
+    background-image: linear-gradient(cyan, purple, rgb(252, 151, 168), red, yellow, green, blue);
+    border: solid rgb(196, 196, 196) 4px;
 }
